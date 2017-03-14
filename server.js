@@ -10,4 +10,4 @@ app.use(methodOverride('_method'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 var port = 3000;
-app.list(port);
+app.listen(port);
