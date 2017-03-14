@@ -7,7 +7,24 @@
 </div>
 </container>
 
+{{#each burgers}}
+	{{#unless this.devoured}}
+		{{this.burger_id}}{{this.burger_name}}
+		<form action="/{{this.burger_id}}?_method=PUT" method="POST">
+			<input type="hidden" name="devoured" value="true">
+			<button type="submit">Devour It!</button>
+		</form>
+	{{/unless}}
+{{/each}}
 
+{{#each burgers}}
+	{{#if this.devoured}}
+		{{this.burger_id}}{{this.burger_name}}
+		<form action="/{{this.burger_id}}?_method=PUT" method="POST">
+			<input type="hidden" name="devoured" value="false">
+		</form>
+	{{/if}}
+{{/each}}
 
 <container id="mainArea">
 <form class="create-add-form" action="/" method="POST">
