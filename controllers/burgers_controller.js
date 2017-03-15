@@ -15,16 +15,16 @@ router.get("/", function(req, res){
 
 router.post("/", function(req, res){
 	burger.create([
-		"burger_name", "devoured"
+		"burger_name"
 		], [
-		req.body.name, req.body.devoured
+		req.body.name
 		], function(){
 			res.redirect("/");
 	});
 });
 
-router.put("/:id", function(req, res) {
-	var condition = "id = " + req.params.burger_id;
+router.put("/:burger_name", function(req, res) {
+	var condition = "burger_name = '" + req.params.burger_name + "'";
 	
 	console.log("condition", condition);
 

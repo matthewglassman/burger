@@ -1,14 +1,14 @@
 var connection = require("../config/connection.js");
 
-function printQuestionMarks(num) {
-	var arr = [];
+// function printQuestionMarks(num) {
+// 	var arr = [];
 
-	for (var i = 0; i < num; i++){
-		arr.push("?");
-	}
+// 	for (var i = 0; i < num; i++){
+// 		arr.push("?");
+// 	}
 
-	return arr.toString();
-}
+// 	return arr.toString();
+// }
 
 function objToSql(ob){
 	var arr = [];
@@ -33,19 +33,17 @@ var orm = {
 		});
 	},
 
-	create: function(table, cols, vals, cb){
+	create: function(table, col, val, cb){
 		var queryString = "INSERT INTO " + table;
 
 		queryString += " (";
-		queryString += cols.toString();
+		queryString += col.toString();
 		queryString += ") ";
-		queryString += "VALUES (";
-		queryString += printQuestionMarks(vals.length);
-		queryString += ") ";
+		queryString += "VALUES (?) ";
 
 		console.log(queryString);
 
-		connection.query(queryString, vals, function(err, result) {
+		connection.query(queryString, val, function(err, result) {
 			if (err){
 				throw err;
 			}
