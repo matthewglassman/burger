@@ -27,10 +27,14 @@
 {{/each}}
 
 <container id="mainArea">
+<div class="row">
+	<div class="col-xs-2">
 <form class="create-add-form" action="/" method="POST">
 	<div class="form-group">
-		<input type="textarea" id="burgerType" name="name">
+		<textarea class="form-control" rows="2" id="burgerType" name="name"></textarea>
+		{{!-- <input type="textarea" id="burgerType" name="name"> --}}
 	</div>
-
 	<button type="submit">Submit</button>
+	</div>
+</div>
 </form>
